@@ -1,7 +1,11 @@
 StockApp::Application.routes.draw do
-  
-  resources :stocks
-  match 'stocks/calculation/:id' => 'stocks#calculation'
+  root :to => 'stocks#index'
+  resources :stocks do
+  #match 'stocks/calculation/:id' => 'stocks#calculation'
+    member do
+      get 'calculation'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

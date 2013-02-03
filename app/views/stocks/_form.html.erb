@@ -1,31 +1,34 @@
 <%= form_for(@stock) do |s| %>
-	<div class="field">
-		<%= s.label :name %><br>
-		<%= s.text_field :name %>
-	</div>
-	<div class="field">
-		<%= s.label :price %><br>
-		<%= s.text_field :price %>
-	</div>
-	<div class="field">
-		<%= s.label :quantity %><br>
-		<%= s.text_field :quantity %>
-	</div>
-	<div class="field">
-		<%= s.label :percent %><br>
-		<%= s.text_field :percent %>
-	</div>
-	<div class="field">
-		<%= s.label :years %><br>
-		<%= s.text_field :years %>
-	</div>
-	<!-- To be visible only when updating -->
-	<div class="field">
-		<%= s.label :value %><br>
-		<%= s.text_field :value %>
-	</div>
-	
-	<div class="action">
-		<%= s.submit %>
+	<div class="form">
+		<div class="field">
+			<%= s.label :name, "Stock name" %>
+			<%= s.text_field :name %>
+		</div>
+		
+		<div class="field">
+			<%= s.label :price, "Price (can be decimal)" %>
+			<%= s.text_field :price %>
+		</div>
+		
+		<div class="field">
+			<%= s.label :quantity, "Quantity (pcs)" %>
+			<%= s.text_field :quantity %>
+		</div>
+		
+		<div class="field">
+			<%= s.label :percent, "Percent as decimal (0.01..1)" %>
+			<%= s.text_field :percent %>
+		</div>
+		
+		<div class="field">
+			<%= s.label :years, "Years" %>
+			<%= s.text_field :years %>
+		</div>
+			
+		<div class="action">
+			<%= s.submit 'Save', :class => 'btn' %>
+			<span> or </span>
+			<%= link_to "cancel", :back %>
+		</div>
 	</div>
 <% end %>

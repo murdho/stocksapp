@@ -1,24 +1,23 @@
-<h1>Stocks</h1>
 
-<p id = "notice"><%= notice %></p>
+<h2>Stocks</h2>
 
-<div class="">
-	<p><%= link_to 'Create new stock', new_stock_path %></p>
-</div>
-
+<p class="notice text-success"><%= notice %></p>
+<div class="row">
 <% @stocks.each do |stock| %>
-<div class="">
-	<h3><%= stock.name %></h3>
-	<p><%= link_to 'Show', stock %> | <%= link_to 'Edit', edit_stock_path(stock) %> | <%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Delete stock?' } %></p>
-	<ul>
-		<li>Price: <%= stock.price %></li>
-		<li>Quantity: <%= stock.quantity %></li>
-		<li>Percent: <%= stock.percent %></li>
-		<li>Years: <%= stock.years %></li>
-		<li>Value: <%= stock.value %></li>
-	</ul>
-</div>
+	<div class="stock_info span6">
+		<h3 class="stock" ><%= stock.name %> 
+			<span class="small">(<%= link_to 'view', stock %> or <%= link_to 'delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %>)</span>
+		</h3>
+		<dl class="stock_data dl-horizontal dl-front">
+			<dt>Price:</dt><dd><%= stock.price %></dd>
+			<dt>Quantity:</dt><dd><%= stock.quantity %></dd>
+			<dt>Percent:</dt><dd><%= stock.percent %></dd>
+			<dt>Years:</dt><dd><%= stock.years %></dd>
+			<dt>Value:</dt><dd><%= stock.value %></dd>
+		</dl>
+	</div>
 <% end %>
+</div>
 <% if @stocks.blank? %>
 	<em>No stocks in database</em>
 <% end %>

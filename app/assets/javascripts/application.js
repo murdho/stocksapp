@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require raphael/raphael.js
+//= require g.raphael/g.raphael.js
+//= require g.raphael/g.bar.js
 //= require_tree .

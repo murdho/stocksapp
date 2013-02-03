@@ -6,6 +6,17 @@ class StocksController < ApplicationController
 
   def show
     @stock = Stock.find(params[:id])
+
+    bundle = @stock.price * @stock.quantity
+    percent = @stock.percent
+    year = @stock.years + 1
+    y = 0
+    @calc = Hash.new
+    year.times do
+      @calc[y] = bundle
+      bundle = bundle + bundle * percent
+      y += 1
+    end
   end
 
   def new
@@ -14,8 +25,13 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(params[:stock])
+    
+
 
     if @stock.save
+      value = (@stock.price * @stock.quantity)*((1+@stock.percent)**@stock.years)
+      @stock.value = value.round(2)
+      @stock.save
       redirect_to @stock, notice: "Stock successfully added."
     else
       render action: "new"
@@ -30,6 +46,9 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
 
     if @stock.update_attributes(params[:stock])
+      value = (@stock.price * @stock.quantity)*((1+@stock.percent)**@stock.years)
+      @stock.value = value.round(2)
+      @stock.save
       redirect_to @stock, notice: "Stock successfully updated."
     else
       render action: "edit"

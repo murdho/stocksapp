@@ -1,0 +1,102 @@
+@import "bootstrap";
+
+/* universal */
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 60px;
+  	height: 100%;
+}
+
+section {
+  orphansverflow: auto;
+}
+
+.form {
+	margin-top: 30px;
+}
+
+/* typography */
+
+.name {
+	color: #049cdb;
+}
+
+.name a:hover {
+	text-decoration: none;
+}
+
+div.stock_info {
+	margin-top: 30px;
+	background-color: #F0F0F0;
+}
+
+div.stock_show {
+	background-color: #F0F0F0;
+	width: 216px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.notice {
+	text-align: left;
+}
+
+.small {
+	font-size: 12px;
+}
+
+.stock_data {
+	list-style-type: none;
+	font-size: 15px;
+}
+
+.dl-front dd{
+	margin-left: 238px;
+}
+
+.dl-front dt {
+	width: 232px;
+}
+
+.dl-show dd{
+	margin-left: 111px;
+	width: 105px;
+}
+
+.dl-show dt {
+	width: 105px;
+}
+
+h3.stock {
+	line-height: 10px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 7px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
