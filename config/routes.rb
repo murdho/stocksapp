@@ -1,4 +1,18 @@
 StockApp::Application.routes.draw do
+  get "stocks/index"
+
+  get "stocks/show"
+
+  get "stocks/new"
+
+  get "stocks/create"
+
+  get "stocks/edit"
+
+  get "stocks/update"
+
+  get "stocks/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
