@@ -1,17 +1,7 @@
 StockApp::Application.routes.draw do
-  get "stocks/index"
-
-  get "stocks/show"
-
-  get "stocks/new"
-
-  get "stocks/create"
-
-  get "stocks/edit"
-
-  get "stocks/update"
-
-  get "stocks/destroy"
+  
+  resources :stocks
+  match 'stocks/calculation/:id' => 'stocks#calculation'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

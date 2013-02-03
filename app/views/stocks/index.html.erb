@@ -1,2 +1,24 @@
-<h1>Stocks#index</h1>
-<p>Find me in app/views/stocks/index.html.erb</p>
+<h1>Stocks</h1>
+
+<p id = "notice"><%= notice %></p>
+
+<div class="">
+	<p><%= link_to 'Create new stock', new_stock_path %></p>
+</div>
+
+<% @stocks.each do |stock| %>
+<div class="">
+	<h3><%= stock.name %></h3>
+	<p><%= link_to 'Show', stock %> | <%= link_to 'Edit', edit_stock_path(stock) %> | <%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Delete stock?' } %></p>
+	<ul>
+		<li>Price: <%= stock.price %></li>
+		<li>Quantity: <%= stock.quantity %></li>
+		<li>Percent: <%= stock.percent %></li>
+		<li>Years: <%= stock.years %></li>
+		<li>Value: <%= stock.value %></li>
+	</ul>
+</div>
+<% end %>
+<% if @stocks.blank? %>
+	<em>No stocks in database</em>
+<% end %>

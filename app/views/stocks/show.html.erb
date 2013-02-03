@@ -1,2 +1,20 @@
-<h1>Stocks#show</h1>
-<p>Find me in app/views/stocks/show.html.erb</p>
+<h1><%= @stock.name %></h1>
+
+<p id = "notice"><%= notice %></p>
+
+<div class = "">
+	<p>Price: <%= @stock.price %></p>
+	<p>Quantity: <%= @stock.quantity %></p>
+	<p>Percent: <%= @stock.percent %></p>
+	<p>Years: <%= @stock.years %></p>
+	<p>Value: <%= @stock.value %></p>
+	<p><em>Here will be calculations and graph</em></p>
+</div>
+
+<div>
+	
+</div>
+
+<%= link_to 'Edit this stock', edit_stock_path(@stock) %> |
+<%= link_to 'Back to stocks list', stocks_path %>
+

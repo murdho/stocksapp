@@ -1,0 +1,31 @@
+<%= form_for(@stock) do |s| %>
+	<div class="field">
+		<%= s.label :name %><br>
+		<%= s.text_field :name %>
+	</div>
+	<div class="field">
+		<%= s.label :price %><br>
+		<%= s.text_field :price %>
+	</div>
+	<div class="field">
+		<%= s.label :quantity %><br>
+		<%= s.text_field :quantity %>
+	</div>
+	<div class="field">
+		<%= s.label :percent %><br>
+		<%= s.text_field :percent %>
+	</div>
+	<div class="field">
+		<%= s.label :years %><br>
+		<%= s.text_field :years %>
+	</div>
+	<!-- To be visible only when updating -->
+	<div class="field">
+		<%= s.label :value %><br>
+		<%= s.text_field :value %>
+	</div>
+	
+	<div class="action">
+		<%= s.submit %>
+	</div>
+<% end %>
