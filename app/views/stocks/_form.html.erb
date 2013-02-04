@@ -1,8 +1,11 @@
+<!--
+	Form gets included in 'new' and 'update' views.
+-->
+
 <%= form_for(@stock) do |s| %>
 	
 	<%= s.error_messages :header_message => "" %>
 	
-
 	<div class="form">
 		<div class="field">
 			<%= s.label :name, "Stock name" %>

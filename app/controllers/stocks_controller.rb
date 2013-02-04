@@ -2,18 +2,18 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all
-
-    
-
   end
 
   def show
     @stock = Stock.find(params[:id])
 
+    # Calculates values for every year;
+    # places them into an hash @calc.
     bundle = @stock.price * @stock.quantity
     percent = @stock.percent/100
     year = @stock.years + 1
     y = 0
+
     @calc = Hash.new
     year.times do
       @calc[y] = bundle
@@ -29,8 +29,8 @@ class StocksController < ApplicationController
   def create
     @stock = Stock.new(params[:stock])
     
-
-
+    # When saving new stock, calculates
+    # field value using formula.
     if @stock.save
       value = (@stock.price * @stock.quantity)*((1+@stock.percent/100)**@stock.years)
       @stock.value = value.round(2)
@@ -48,6 +48,8 @@ class StocksController < ApplicationController
   def update
     @stock = Stock.find(params[:id])
 
+    # When updating stock, calculates
+    # field value using formula.
     if @stock.update_attributes(params[:stock])
       value = (@stock.price * @stock.quantity)*((1+@stock.percent/100)**@stock.years)
       @stock.value = value.round(2)
@@ -65,6 +67,6 @@ class StocksController < ApplicationController
   end
 
   def help
-
+    # Nothing here, everything in view.
   end
 end

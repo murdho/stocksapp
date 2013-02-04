@@ -1,60 +1,84 @@
-	<h2><span class="name"><%= link_to @stock.name, root_path %></span> stocks data 
-		<span class="small">(<%= link_to 'edit', edit_stock_path(@stock) %> or <%= link_to 'delete', @stock, method: :delete, data: { confirm: 'Are you sure?' } %>)</span></h2>
+<!--
+	Page that shows information about stock.
+	3 columns using bootstrap's pre-defined layout classes.
+--> 
 
-		<p class="notice text-success"><%= notice %></p>
-		<div class="row">
-			<div class="span3">
-				<div class="stock_show">
-					<dl class="stock_data dl-horizontal dl-show">
-						<dt>Price:</dt><dd><%= @stock.price %></dd>
-						<dt>Quantity:</dt><dd><%= @stock.quantity %></dd>
-						<dt>Percent:</dt><dd><%= @stock.percent %></dd>
-						<dt>Years:</dt><dd><%= @stock.years %></dd>
-						<dt>Value:</dt><dd><%= @stock.value %></dd>
-					</dl>
-				</div>
-			</div>
+<h2>
+	<span class="name"><%= link_to @stock.name, root_path %></span> stocks data 
+	<span class="small">(<%= link_to 'edit', edit_stock_path(@stock) %> or 
+		<%= link_to 'delete', @stock, method: :delete, data: { confirm: 'Are you sure?' } %>)
+	</span>
+</h2>
 
-			<div class="span4">
-				<div class="calculation">
-					<p>Stocks value after <%= @stock.years %> years: <b><%= @stock.value %></b></p>
-					<p>Stocks value every year:</p>
-					<ul class="stock_data">
-						<% @calc.each do |c| %>
-						<li><%= c[0] %> - <%= c[1].round(2) %></li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
+<p class="notice text-success"><%= notice %></p>
 
-			<div class="span5">
-				<p>Stocks values represented as graph (hover for value):</p>
-				<script>
-				window.onload = function () {
-					var r = Raphael("holder"),
-					fin = function () {
-						this.flag = r.label(this.bar.x,this.bar.y,this.bar.value).insertBefore(this);
+<div class="row">
+	<div class="span3">
+		<div class="stock_show">
+			<dl class="stock_data dl-horizontal dl-show">
+				<dt>Price:</dt><dd><%= @stock.price %></dd>
+				<dt>Quantity:</dt><dd><%= @stock.quantity %></dd>
+				<dt>Percent:</dt><dd><%= @stock.percent %></dd>
+				<dt>Years:</dt><dd><%= @stock.years %></dd>
+				<dt>Value:</dt><dd><%= @stock.value %></dd>
+			</dl>
+		</div>
+	</div>
 
-					},
-					fout = function () {
-						this.flag.animate({opacity: 0}, 100, function () {this.remove();});
-					},
+	<div class="span4">
+		<div class="calculation">
+			<p>Stocks value after <%= @stock.years %> years: <b><%= @stock.value %></b></p>
+			<p>Stocks value every year:</p>
+			<ul class="stock_data">
+				<% @calc.each do |c| %>
+				<li><%= c[0] %> - <%= c[1].round(2) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 
-					txtattr = { font: "12px sans-serif" };
+	<div class="span5">
+		<p>Stocks values represented as graph (hover for value):</p>
+		
+		<!-- This generates the graph using data from controller created hash @calc -->
+		<script>
+		window.onload = function () {
+			var r = Raphael("holder"),
+			fin = function () {
+				this.flag = r.label(this.bar.x,this.bar.y,this.bar.value).insertBefore(this);
 
-					var chart = r.barchart(10, 20, 350, 300, [[ <% @calc.each do |a| %><%= a[1].round(2) %>,<% end %>]]).hover(fin,fout);
-					var colors =["#00A9FF","#00A5F9","#00A2F4","#009EEF","#009BEA","#0098E5","#0094E0","#0091DB","#008DD6","#008AD1","#0087CB","#0083C6","#0080C1","#007DBC","#0079B7","#0076B2","#0072AD","#006FA8","#006CA3","#00689E","#006598","#006293","#005E8E","#005B89","#005784","#00547F","#00517A","#004D75","#004A70","#00476B"];
+			},
+			fout = function () {
+				this.flag.animate({opacity: 0}, 100, function () {this.remove();});
+			},
 
-						// use jquery for easier way 
-						$("#holder svg path").each(function(index){
-							$(this).attr("fill",colors[index]);
-						});          	   
+			txtattr = { font: "12px sans-serif" };
 
-					};
-					</script>
-					<div id="holder"></div>
-				</div>
-			</div>
+			var chart = r.barchart(10, 20, 350, 300, 
+				[[ <% @calc.each do |a| %><%= a[1].round(2) %>,<% end %>]]).hover(fin,fout);
+			
+			var colors =["#00A9FF","#00A5F9","#00A2F4",
+							"#009EEF","#009BEA","#0098E5",
+							"#0094E0","#0091DB","#008DD6",
+							"#008AD1","#0087CB","#0083C6",
+							"#0080C1","#007DBC","#0079B7",
+							"#0076B2","#0072AD","#006FA8",
+							"#006CA3","#00689E","#006598",
+							"#006293","#005E8E","#005B89",
+							"#005784","#00547F","#00517A",
+							"#004D75","#004A70","#00476B"];
+
+				// jQuery adds colors to graph.
+				$("#holder svg path").each(function(index){
+					$(this).attr("fill",colors[index]);
+				});          	   
+
+			};
+		</script>
+	
+		<div id="holder"></div>
+	</div>
+</div>
 
 
 

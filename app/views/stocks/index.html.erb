@@ -1,24 +1,37 @@
+<!--
+	Landing page for stocks application.
+-->
 
 <h2>All stocks</h2>
 
 <p class="notice text-success"><%= notice %></p>
+
 <div class="row">
-<% @stocks.each do |stock| %>
-	<div class="stock_info span6">
-		<h3 class="stock" ><%= stock.name %> 
-			<span class="small">(<%= link_to 'view', stock %>, <%= link_to 'edit', edit_stock_path(stock) %> or 
-				<%= link_to 'delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %>)</span>
-		</h3>
-		<dl class="stock_data dl-horizontal dl-front">
-			<dt>Price:</dt><dd><%= stock.price %></dd>
-			<dt>Quantity:</dt><dd><%= stock.quantity %></dd>
-			<dt>Percent:</dt><dd><%= stock.percent %></dd>
-			<dt>Years:</dt><dd><%= stock.years %></dd>
-			<dt>Value:</dt><dd><%= stock.value %></dd>
-		</dl>
-	</div>
-<% end %>
+	<!-- Iterates through @stocks and displays all stocks in database -->
+	<% @stocks.each do |stock| %>
+	
+		<div class="stock_info span6">
+			<h3 class="stock" ><%= stock.name %> 
+				<span class="small">(<%= link_to 'view', stock %>, 
+					<%= link_to 'edit', edit_stock_path(stock) %> or 
+					<%= link_to 'delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %>)
+				</span>
+			</h3>
+		
+			<dl class="stock_data dl-horizontal dl-front">
+				<dt>Price:</dt><dd><%= stock.price %></dd>
+				<dt>Quantity:</dt><dd><%= stock.quantity %></dd>
+				<dt>Percent:</dt><dd><%= stock.percent %></dd>
+				<dt>Years:</dt><dd><%= stock.years %></dd>
+				<dt>Value:</dt><dd><%= stock.value %></dd>
+			</dl>
+		
+		</div>
+		
+	<% end %>
 </div>
+
+<!-- When no stocks in database... -->
 <% if @stocks.blank? %>
 	<em>No stocks in database</em>
 <% end %>
