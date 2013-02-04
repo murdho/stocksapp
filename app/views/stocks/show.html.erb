@@ -1,4 +1,4 @@
-	<h2><span class="name"><%= link_to @stock.name, root_path %></span> stock data 
+	<h2><span class="name"><%= link_to @stock.name, root_path %></span> stocks data 
 		<span class="small">(<%= link_to 'edit', edit_stock_path(@stock) %> or <%= link_to 'delete', @stock, method: :delete, data: { confirm: 'Are you sure?' } %>)</span></h2>
 
 		<p class="notice text-success"><%= notice %></p>
