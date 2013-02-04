@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>StockApp - Managing Your Stocks</title>
+	<title>Stocks - Managing Your Stocks</title>
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
@@ -11,10 +11,10 @@
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<%= link_to 'StockApp', root_path, id: "logo" %>
+				<%= link_to 'Stocks', root_path, id: "logo" %>
 				<nav>
 					<ul class="nav pull-right">
-						<li><%= link_to 'Stocks', root_path %></li>
+						<li><%= link_to 'View all stocks', root_path %></li>
 						<li><%= link_to 'Create new stock', new_stock_path %></li>
 						<li><%= link_to 'Help', help_path %></li>
 					</ul>
