@@ -17,7 +17,7 @@
 
 			<div class="span4">
 				<div class="calculation">
-					<p>Stocks value after <%= @stock.years %> years: <b>~<%= @stock.value %></b></p>
+					<p>Stocks value after <%= @stock.years %> years: <b><%= @stock.value %></b></p>
 					<p>Stocks value every year:</p>
 					<ul class="stock_data">
 						<% @calc.each do |c| %>
