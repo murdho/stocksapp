@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203110245) do
+ActiveRecord::Schema.define(:version => 20130203211352) do
 
   create_table "stocks", :force => true do |t|
-    t.string   "name"
-    t.float    "price"
+    t.string   "name",                                      :null => false
+    t.decimal  "price",      :precision => 7,  :scale => 2
     t.integer  "quantity"
-    t.float    "percent"
+    t.decimal  "percent",    :precision => 7,  :scale => 2
     t.integer  "years"
-    t.float    "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.decimal  "value",      :precision => 10, :scale => 2
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
 end

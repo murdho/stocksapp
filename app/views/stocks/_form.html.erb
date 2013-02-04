@@ -1,34 +1,39 @@
 <%= form_for(@stock) do |s| %>
+	
+	<%= s.error_messages :header_message => "" %>
+	
+
 	<div class="form">
 		<div class="field">
 			<%= s.label :name, "Stock name" %>
-			<%= s.text_field :name %>
+			<%= s.text_field :name, :class => "text_field", :placeholder => "Tallink" %>
+			<span class="text-error"></span>
 		</div>
 		
 		<div class="field">
 			<%= s.label :price, "Price (can be decimal)" %>
-			<%= s.text_field :price %>
+			<%= s.text_field :price, :placeholder => "10" %>
 		</div>
 		
 		<div class="field">
 			<%= s.label :quantity, "Quantity (pcs)" %>
-			<%= s.text_field :quantity %>
+			<%= s.text_field :quantity, :placeholder => "10" %>
 		</div>
 		
 		<div class="field">
-			<%= s.label :percent, "Percent as decimal (0.01..1)" %>
-			<%= s.text_field :percent %>
+			<%= s.label :percent, "Percent" %>
+			<%= s.text_field :percent, :placeholder => "10" %>
 		</div>
 		
 		<div class="field">
 			<%= s.label :years, "Years" %>
-			<%= s.text_field :years %>
+			<%= s.text_field :years, :placeholder => "10" %>
 		</div>
 			
 		<div class="action">
 			<%= s.submit 'Save', :class => 'btn' %>
 			<span> or </span>
-			<%= link_to "cancel", :back %>
+			<%= link_to "cancel", :back, data: { confirm: 'Are you sure?' } %>
 		</div>
 	</div>
 <% end %>

@@ -15,9 +15,37 @@ section {
   orphansverflow: auto;
 }
 
+#help {
+	margin-top: 30px;
+}
+
 .form {
 	margin-top: 30px;
 }
+
+/* form validation */
+
+.field_with_errors {
+	@extend .control-group.error;
+}
+
+.field_with_errors {
+	@extend .control-group.error;
+}
+
+#errorExplanation {
+	@extend .text-error;
+	margin-top: 30px;
+}
+
+#errorExplanation p {
+	color: #333333;
+}
+
+#errorExplanation ul li {
+	
+}
+
 
 /* typography */
 
@@ -54,12 +82,16 @@ div.stock_show {
 	font-size: 15px;
 }
 
+.dl-front dt {
+	width: 232px;
+}
+
 .dl-front dd{
 	margin-left: 238px;
 }
 
-.dl-front dt {
-	width: 232px;
+.dl-show dt {
+	width: 105px;
 }
 
 .dl-show dd{
@@ -67,14 +99,19 @@ div.stock_show {
 	width: 105px;
 }
 
-.dl-show dt {
-	width: 105px;
+.dl-help dt {
+	width: 60px;
 }
+
+.dl-help dd {
+	margin-left: 70px;
+}
+
 
 h3.stock {
 	line-height: 10px;
 	text-align: center;
-	margin-top: 15px;
+	margin-top: 20px;
 }
 
 p {

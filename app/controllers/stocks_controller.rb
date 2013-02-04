@@ -2,13 +2,16 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all
+
+    
+
   end
 
   def show
     @stock = Stock.find(params[:id])
 
     bundle = @stock.price * @stock.quantity
-    percent = @stock.percent
+    percent = @stock.percent/100
     year = @stock.years + 1
     y = 0
     @calc = Hash.new
@@ -29,7 +32,7 @@ class StocksController < ApplicationController
 
 
     if @stock.save
-      value = (@stock.price * @stock.quantity)*((1+@stock.percent)**@stock.years)
+      value = (@stock.price * @stock.quantity)*((1+@stock.percent/100)**@stock.years)
       @stock.value = value.round(2)
       @stock.save
       redirect_to @stock, notice: "Stock successfully added."
@@ -46,7 +49,7 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
 
     if @stock.update_attributes(params[:stock])
-      value = (@stock.price * @stock.quantity)*((1+@stock.percent)**@stock.years)
+      value = (@stock.price * @stock.quantity)*((1+@stock.percent/100)**@stock.years)
       @stock.value = value.round(2)
       @stock.save
       redirect_to @stock, notice: "Stock successfully updated."
@@ -61,18 +64,7 @@ class StocksController < ApplicationController
     redirect_to stocks_path, notice: "Stock successfully deleted."
   end
 
-  def calculation
-    @stock = Stock.find(params[:id])
+  def help
 
-    bundle = @stock.price * @stock.quantity
-    percent = @stock.percent
-    year = @stock.years + 1
-    y = 0
-    @calc = Hash.new
-    year.times do
-      @calc[y] = bundle
-      bundle = bundle + bundle * percent
-      y += 1
-    end
   end
 end

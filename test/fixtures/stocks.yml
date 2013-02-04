@@ -2,16 +2,16 @@
 
 one:
   name: MyString
-  price: 1.5
+  price: 9.99
   quantity: 1
-  percent: 1.5
+  percent: 9.99
   years: 1
-  value: 1.5
+  value: 9.99
 
 two:
   name: MyString
-  price: 1.5
+  price: 9.99
   quantity: 1
-  percent: 1.5
+  percent: 9.99
   years: 1
-  value: 1.5
+  value: 9.99

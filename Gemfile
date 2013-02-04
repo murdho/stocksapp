@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "graphael-rails", "~> 0.1.4"
+gem 'dynamic_form'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
